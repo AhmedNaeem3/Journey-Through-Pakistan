@@ -13,8 +13,10 @@ export const registerUser = async (req, res) => {
             email,
             password,
             role,
+            address,
             phone,
             city,
+            postalCode,
             country
         } = req.body;
 
@@ -43,8 +45,12 @@ export const registerUser = async (req, res) => {
             password: hashedPassword,
             role,
             phone,
-            city,
-            country,
+            shippingAddress: {
+                address,
+                city,
+                postalCode,
+                country
+            },
             profilePicture: image_url,
             otpVerify: hashedOTP,
             otpExpiry: Date.now() + 5 * 60 * 1000
@@ -144,6 +150,30 @@ export const getUserById = async (req, res) => {
 }
 
 
+export const updateUserById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const updates = req.body;
+
+        if (updates.password) {
+            const salt = await bcrypt.genSalt(10);
+            const hashPassword = await bcrypt.hash(updates.password, salt);
+            updates.password = hashPassword;
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(userId, updates, { new: true }).select('-password');
+
+        if (!updatedUser) {
+            res.status(400).json({ message: "User Not found!" });
+        }
+
+        res.status(200).json({ message: "User Updated Successfully!", updatedUser })
+    }
+    catch (err) {
+        res.status(500).json({ message: "Error while updating user: ", err })
+    }
+}
+
 export const getMe = async (req, res) => {
     try {
         const me = await User.findById(req.user.id).select('-password');
@@ -172,6 +202,18 @@ export const updateMe = async (req, res) => {
     }
 }
 
+export const deleteUserById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+
+        await User.findByIdAndDelete(userId);
+
+        res.status(200).json({ message: "User Deleted Successfully!" });
+    }
+    catch (err) {
+        res.status(500).json({ message: "Error deleting user", err })
+    }
+}
 
 export const verifyOtp = async (req, res) => {
     try {
