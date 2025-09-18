@@ -1,68 +1,65 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-
-const userSchema = new mongoose.Schema({
-
+const userSchema = new mongoose.Schema(
+  {
     name: {
-    type: String
+      type: String,
     },
 
     auth0Id: {
-    type: String,
-    index: true
+      type: String,
+      index: true,
     },
 
     email: {
-    type: String,
-    unique: true,
+      type: String,
+      unique: true,
     },
 
     password: {
-    type: String,
+      type: String,
     },
 
     role: {
-    type: String,
-    enum: ['tourist', 'guide'],
-    default: ''
+      type: String,
+      enum: ["tourist", "local"],
+      default: "tourist",
     },
 
     phone: {
-    type: String
+      type: String,
     },
 
     city: {
-        type: String
+      type: String,
     },
 
     country: {
-        type: String 
+      type: String,
     },
 
     isActive: {
-    type: Boolean,
-    default: true
+      type: Boolean,
+      default: true,
     },
 
-    profilePicture:{
-        type:String
+    profilePicture: {
+      type: String,
     },
 
-    otpVerify:{
-        type:String
+    otpVerify: {
+      type: String,
     },
 
-    otpExpiry:{
-        type:Date
+    otpExpiry: {
+      type: Date,
     },
+  },
 
-},
-
-{
-    timestamps: true
-}
+  {
+    timestamps: true,
+  }
 );
-
 
 const User = mongoose.model("User", userSchema);
 

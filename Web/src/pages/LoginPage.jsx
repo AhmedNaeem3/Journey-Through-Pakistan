@@ -2,14 +2,14 @@ import React from "react";
 import LoginForm from "../components/LoginForm";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+// import { loadFull } from "tsparticles";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import travelImage from "../images/download.jpeg";
 
 export default function LoginPage() {
-  const particlesInit = async (main) => {
-    await loadFull(main);
-  };
+  // const particlesInit = async (main) => {
+  //   await loadFull(main);
+  // };
 
   return (
     <div
@@ -93,8 +93,8 @@ export default function LoginPage() {
         >
           {/* Particles Animation */}
           <Particles
-            id="tsparticles"
-            init={particlesInit}
+            // id="tsparticles"
+            // init={particlesInit}
             options={{
               fullScreen: { enable: false },
               background: { color: "transparent" },

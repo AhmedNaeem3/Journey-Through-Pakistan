@@ -1,0 +1,27 @@
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.dashboard-card h1 {
+    font-size: 2rem;
+    color: #6e45e2;
+    margin-bottom: 10px;
+}
+
+.dashboard-card p {
+    font-size: 1.2rem;
+    color: #444;
+}
