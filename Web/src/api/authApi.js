@@ -1,40 +1,43 @@
 // src/api/authApi.js
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api"; // Change to your backend URL
+const API_URL = "http://localhost:3000/users"; // ✅ this matches your backend mount point
 
+const api = axios.create({
+  baseURL: API_URL,
+  withCredentials: true,
+});
+
+// REGISTER user
 export const signup = async (data) => {
-  const formData = new FormData(); // because we have image upload
-  Object.keys(data).forEach((key) => {
-    formData.append(key, data[key]);
-  });
+  const formData = new FormData();
 
-  return axios.post(`${API_URL}/signup`, formData, {
+  if (data.name) formData.append("name", data.name);
+  if (data.email) formData.append("email", data.email);
+  if (data.password) formData.append("password", data.password);
+  if (data.role) formData.append("role", data.role);
+  if (data.phone) formData.append("phone", data.phone);
+  if (data.city) formData.append("city", data.city);
+  if (data.country) formData.append("country", data.country);
+  if (data.profilePicture)
+    formData.append("profilePicture", data.profilePicture);
+
+  return api.post("/register", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 };
-// POST /auth/login  (email/password)
-export const login = (payload) => {
-  return axios.post(`${API_URL}/auth/login`, payload);
-};
 
-// return the redirect URL for provider-based OAuth (server should implement the route)
-export const getOAuthUrl = (provider) => {
-  // provider expected: "google", "facebook", "apple"
-  return `${API_URL}/auth/${provider}`;
-};
+// LOGIN
+export const login = (payload) => api.post("/login", payload);
 
-// Optional helper that opens an OAuth popup (returns the popup window handle)
-export const openOAuthPopup = (provider, name = "oauthPopup") => {
-  const url = getOAuthUrl(provider);
-  // open centered popup
-  const width = 600,
-    height = 700;
-  const left = window.screenX + (window.innerWidth - width) / 2;
-  const top = window.screenY + (window.innerHeight - height) / 2;
-  return window.open(
-    url,
-    name,
-    `width=${width},height=${height},left=${left},top=${top}`
-  );
-};
+// GET logged-in user (note: backend route is /users/getMe)
+export const getMe = () => api.get("/getMe");
+
+// VERIFY OTP
+export const verifyOtp = (payload) => api.post("/verify-otp", payload);
+
+// RESEND OTP
+export const resendOtp = (payload) => api.post("/resend-otp", payload);
+
+// LOGOUT (optional)
+export const logout = () => api.post("/logout");

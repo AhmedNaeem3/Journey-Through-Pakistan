@@ -1,33 +1,38 @@
 // src/components/LoginForm.jsx
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaGoogle, FaApple, FaFacebookF } from "react-icons/fa";
-import { login, openOAuthPopup } from "../api/authApi";
-import "../pages/login.css";
-/**
- * LoginForm component
- * - email/password login
- * - OAuth buttons (Google / Apple / Facebook) open the backend OAuth route in a popup
- */
-export default function LoginForm() {
-  const [data, setData] = useState({ email: "", password: "" }); // form state
-  const [loading, setLoading] = useState(false); // submit state
-  const [error, setError] = useState(""); // show auth errors
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { login, getMe } from "../api/authApi"; // ✅ use from your authApi.js
 
-  // handle input changes
+export default function LoginForm() {
+  const [data, setData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  // form submit - email / password
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
+
     try {
-      const res = await login({ email: data.email, password: data.password });
-      // backend should return token / user object
-      console.log("Login success:", res.data);
-      // TODO: save token (e.g., localStorage) and redirect to dashboard
+      // 🔹 Step 1: Call backend login API (normal email/password)
+      await login(data); // cookie will be set by backend
+
+      // 🔹 Step 2: Fetch logged-in user
+      const res = await getMe();
+
+      // 🔹 Step 3: Save user in context
+      setUser(res.data);
+
+      // 🔹 Step 4: Redirect to dashboard/home
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {
@@ -35,17 +40,20 @@ export default function LoginForm() {
     }
   };
 
-  // open popup for provider (google/facebook/apple)
+  // 🔹 Redirect to backend for OAuth login
   const handleOAuth = (provider) => {
-    openOAuthPopup(provider);
-    // Optionally listen for messages from popup (if your backend sends postMessage)
-    // window.addEventListener("message", (ev) => { ... });
+    let url = "";
+    if (provider === "google") url = "http://localhost:3000/auth/login/google";
+    if (provider === "facebook")
+      url = "http://localhost:3000/auth/login/facebook";
+    if (provider === "apple") url = "http://localhost:3000/auth/login/apple";
+
+    window.location.href = url; // 🚀 redirect user to backend OAuth flow
   };
 
   return (
     <form onSubmit={handleSubmit} noValidate>
       <div className="mb-3 text-center">
-        {/* <div className="title">Login to Your Account</div> */}
         <h2>Login to Your Account</h2>
         <div className="subtitle">
           Enter your details below to access your personalized travel journey.
@@ -129,7 +137,7 @@ export default function LoginForm() {
       </div>
 
       <div className="bottom-note">
-        Don't have an account? <a href="/signup">Sign Up</a>
+        Don’t have an account? <a href="/signup">Sign Up</a>
       </div>
     </form>
   );

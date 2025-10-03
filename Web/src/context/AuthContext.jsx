@@ -1,29 +1,29 @@
-// src/context/AuthContext.jsx
-import { createContext, useContext, useState } from "react";
-import { signup } from "../api/authApi";
+import React, { createContext, useState, useEffect } from "react";
+import { getMe } from "../api/authApi";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const handleSignup = async (formData) => {
-    try {
-      setLoading(true);
-      const response = await signup(formData);
-      return response.data; // Return response to component
-    } catch (error) {
-      throw error.response?.data?.message || "Signup failed";
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await getMe();
+        setUser(res.data.user);
+      } catch {
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ handleSignup, loading }}>
+    <AuthContext.Provider value={{ user, setUser, loading }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => useContext(AuthContext);

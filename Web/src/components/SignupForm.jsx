@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // ✅ Import at top of file
+import { signup } from "../api/authApi";
+import { useNavigate, Link } from "react-router-dom";
+
 export default function SignupForm() {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    role: "",
-    region: "",
+    role: "tourist",
+    phone: "", // added (backend expects this)
+    city: "",
+    country: "",
     profilePicture: null,
     agree: false,
   });
 
-  const darkOrange = "#E65100"; // Dark Orange Color
+  const darkOrange = "#E65100";
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -23,9 +28,23 @@ export default function SignupForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data: ", formData);
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const payload = { ...formData };
+      delete payload.confirmPassword; // ✅ remove confirmPassword before sending
+
+      await signup(payload);
+      navigate("/verify-otp", { state: { email: formData.email } });
+    } catch (err) {
+      alert(err.response?.data?.message || "Registration failed");
+    }
   };
 
   return (
@@ -35,18 +54,18 @@ export default function SignupForm() {
       <p className="text-muted text-center">
         Embark on your journey. Fill in your details below.
       </p>
-      {/* Full Name */}
+      {/* Name */}
       <div className="mb-3">
-        <label htmlFor="fullName" className="form-label fw-semibold">
+        <label htmlFor="name" className="form-label fw-semibold">
           Full Name
         </label>
         <input
           type="text"
-          id="fullName"
+          id="name"
           className="form-control fw-semibold"
           placeholder="Enter your full name"
-          name="fullName"
-          value={formData.fullName}
+          name="name"
+          value={formData.name}
           onChange={handleChange}
           required
         />
@@ -63,6 +82,22 @@ export default function SignupForm() {
           placeholder="Enter your email"
           name="email"
           value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      {/* Phone (NEW) */}
+      <div className="mb-3">
+        <label htmlFor="phone" className="form-label fw-semibold">
+          Phone Number
+        </label>
+        <input
+          type="text"
+          id="phone"
+          className="form-control fw-semibold"
+          placeholder="Enter your phone number"
+          name="phone"
+          value={formData.phone}
           onChange={handleChange}
           required
         />
@@ -99,7 +134,7 @@ export default function SignupForm() {
           required
         />
       </div>
-      {/* Select Role */}
+      {/* Role */}
       <div className="mb-3">
         <label htmlFor="role" className="form-label fw-semibold">
           Select Role
@@ -112,23 +147,37 @@ export default function SignupForm() {
           onChange={handleChange}
           required
         >
-          <option value="">Select your role</option>
           <option value="local">Local</option>
           <option value="tourist">Tourist</option>
         </select>
       </div>
-      {/* Region */}
+      {/* City */}
       <div className="mb-3">
-        <label htmlFor="region" className="form-label fw-semibold">
-          Region/City (Relevant for Locals)
+        <label htmlFor="city" className="form-label fw-semibold">
+          City
         </label>
         <input
           type="text"
-          id="region"
+          id="city"
           className="form-control fw-semibold"
-          placeholder="e.g., Paris, Kyoto, New York"
-          name="region"
-          value={formData.region}
+          placeholder="Enter your city"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+        />
+      </div>
+      {/* Country */}
+      <div className="mb-3">
+        <label htmlFor="country" className="form-label fw-semibold">
+          Country
+        </label>
+        <input
+          type="text"
+          id="country"
+          className="form-control fw-semibold"
+          placeholder="Enter your country"
+          name="country"
+          value={formData.country}
           onChange={handleChange}
         />
       </div>
@@ -141,14 +190,14 @@ export default function SignupForm() {
           htmlFor="profilePicture"
           className="d-flex align-items-center justify-content-center fw-semibold"
           style={{
-            width: "100%", // Full width like other inputs
-            minHeight: "150px", // Same height as text input
-            border: "2px dashed #ced4da", // Same border style
-            borderRadius: "6px", // Same rounded corners
-            backgroundColor: "#fafafa", // Light background
+            width: "100%",
+            minHeight: "150px",
+            border: "2px dashed #ced4da",
+            borderRadius: "6px",
+            backgroundColor: "#fafafa",
             cursor: "pointer",
             textAlign: "center",
-            padding: "10px 12px", // Same padding as form-control
+            padding: "10px 12px",
           }}
         >
           📷 Click to upload (Optional)
@@ -161,7 +210,7 @@ export default function SignupForm() {
           onChange={handleChange}
         />
       </div>
-      {/* Terms of Service */}
+      {/* Terms */}
       <div className="form-check mb-3">
         <input
           className="form-check-input"
@@ -192,12 +241,13 @@ export default function SignupForm() {
       >
         Create Account
       </button>
-      {/* Login Link */}
-
+      {/* Login Link */}{" "}
       <p className="text-center mt-3">
+        {" "}
         Already have an account?{" "}
         <Link to="/login" style={{ color: darkOrange, fontWeight: "600" }}>
-          Login
+          {" "}
+          Login{" "}
         </Link>
       </p>
     </form>

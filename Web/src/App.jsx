@@ -3,6 +3,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import OTPVerification from "./components/OtpVerify";
+import Dashboard from "./pages/DashBoard";
 
 function App() {
   return (
@@ -12,6 +14,9 @@ function App() {
         <Routes>
           {/* Signup Page */}
           <Route path="/signup" element={<SignupPage />} />
+
+          <Route path="/verify-otp" element={<OTPVerification />} />
+          <Route path="/dashboard" element={<Dashboard />} />
 
           {/* Login Page */}
           <Route path="/login" element={<LoginPage />} />
