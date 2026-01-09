@@ -1,0 +1,15 @@
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/CMakeFiles/appmodules.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/CMakeFiles/edit_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/CMakeFiles/rebuild_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/safeareacontext_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/safeareacontext_autolinked_build/CMakeFiles/rebuild_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rnscreens_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rnscreens_autolinked_build/CMakeFiles/rebuild_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rngesturehandler_codegen_autolinked_build/CMakeFiles/rebuild_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rnasyncstorage_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86/rnasyncstorage_autolinked_build/CMakeFiles/rebuild_cache.dir

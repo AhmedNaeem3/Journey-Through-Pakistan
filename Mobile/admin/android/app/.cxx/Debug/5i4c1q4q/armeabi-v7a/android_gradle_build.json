@@ -1,0 +1,78 @@
+{
+  "buildFiles": [
+    "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/CMakeLists.txt",
+    "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/CMakeLists.txt",
+    "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt",
+    "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt",
+    "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/personal/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/personal/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "appmodules::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "appmodules",
+      "output": "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/build/intermediates/cxx/Debug/5i4c1q4q/obj/armeabi-v7a/libappmodules.so",
+      "runtimeFiles": [
+        "/Users/personal/.gradle/caches/8.13/transforms/1c198194fb52b0a370a807ed0419898a/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.armeabi-v7a/libfbjni.so",
+        "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/jsi/libs/android.armeabi-v7a/libjsi.so",
+        "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/reactnative/libs/android.armeabi-v7a/libreactnative.so"
+      ]
+    },
+    "react_codegen_rnasyncstorage::@1596841e19ec5b9eeffe": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "react_codegen_rnasyncstorage"
+    },
+    "react_codegen_rngesturehandler_codegen::@39f233abcd2c728bc6ec": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "react_codegen_rngesturehandler_codegen"
+    },
+    "react_codegen_rnscreens::@25bcbd507e98d3a854ad": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "react_codegen_rnscreens",
+      "output": "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/build/intermediates/cxx/Debug/5i4c1q4q/obj/armeabi-v7a/libreact_codegen_rnscreens.so",
+      "runtimeFiles": [
+        "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/reactnative/libs/android.armeabi-v7a/libreactnative.so",
+        "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/jsi/libs/android.armeabi-v7a/libjsi.so",
+        "/Users/personal/.gradle/caches/8.13/transforms/1c198194fb52b0a370a807ed0419898a/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.armeabi-v7a/libfbjni.so"
+      ]
+    },
+    "react_codegen_safeareacontext::@7984cd80db47aa7b952a": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "react_codegen_safeareacontext",
+      "output": "/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/build/intermediates/cxx/Debug/5i4c1q4q/obj/armeabi-v7a/libreact_codegen_safeareacontext.so",
+      "runtimeFiles": [
+        "/Users/personal/.gradle/caches/8.13/transforms/1c198194fb52b0a370a807ed0419898a/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.armeabi-v7a/libfbjni.so",
+        "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/jsi/libs/android.armeabi-v7a/libjsi.so",
+        "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/reactnative/libs/android.armeabi-v7a/libreactnative.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/personal/Library/Android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/personal/Library/Android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

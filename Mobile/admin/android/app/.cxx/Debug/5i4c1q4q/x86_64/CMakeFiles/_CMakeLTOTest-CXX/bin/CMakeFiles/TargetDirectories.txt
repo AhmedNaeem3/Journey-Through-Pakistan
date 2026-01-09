@@ -1,0 +1,4 @@
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
+/Users/personal/JTP(FYP)/Journey-Through-Pakistan/MobileApp/android/app/.cxx/Debug/5i4c1q4q/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir
