@@ -230,12 +230,17 @@ export const login = async (req, res) => {
     // Reset attempts on successful login
     loginAttempts.delete(attemptKey);
 
+    // Check if this is an admin login request (from admin panel)
+    const isAdminLogin = req.headers['x-admin-panel'] === 'true' || 
+                         req.headers.referer?.includes('localhost:5174') ||
+                         req.query.admin === 'true';
+
     // Log successful login
     try {
       const { createSecurityLog } = await import('../controller/securityLogController.js');
       const { getClientIP } = await import('../utils/getClientIP.js');
       await createSecurityLog({
-        eventType: isAdminLogin ? 'login_success' : 'login_success',
+        eventType: 'login_success',
         userId: existingUser._id,
         ipAddress: getClientIP(req),
         userAgent: req.headers['user-agent'] || 'unknown',
@@ -251,11 +256,6 @@ export const login = async (req, res) => {
     } catch (logError) {
       console.error('Error logging successful login:', logError);
     }
-
-    // Check if this is an admin login request (from admin panel)
-    const isAdminLogin = req.headers['x-admin-panel'] === 'true' || 
-                         req.headers.referer?.includes('localhost:5174') ||
-                         req.query.admin === 'true';
     
     // If it's an admin login request, verify the user is actually an admin
     if (isAdminLogin) {
