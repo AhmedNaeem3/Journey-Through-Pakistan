@@ -128,7 +128,7 @@ const ManageUsers = () => {
       let errorMessage = 'Failed to fetch users';
       
       if (err.code === 'ERR_NETWORK' || err.message?.includes('Network Error')) {
-        errorMessage = 'Network error: Unable to connect to server. Please check if the server is running on http://localhost:3000';
+        errorMessage = 'Network error: Unable to connect to server. Please check if the server is running at the configured API URL';
       } else if (err.response?.status === 401) {
         errorMessage = 'Unauthorized: Please login again';
       } else if (err.response?.status === 403) {

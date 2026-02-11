@@ -6,6 +6,8 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { PostCardSkeleton } from '../components/SkeletonLoader.jsx';
 import "../assests/css/community.css";
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 // Reuse PostCard from Community
 function renderWithHashtags(text, onHashtagClick) {
   if (!text) return null;
@@ -81,7 +83,7 @@ function PostCard({ post, currentUser, onUnsave }) {
             <img 
               className="rounded-circle" 
               style={{ width: '40px', height: '40px', objectFit: 'cover' }}
-              src={post.author?.profilePicture ? `http://localhost:3000/${post.author.profilePicture}` : "/default-avatar.png"} 
+              src={post.author?.profilePicture ? `${API_BASE}/${post.author.profilePicture}` : "/default-avatar.png"} 
               alt={post.author?.name || "User"} 
             />
           </Link>
@@ -127,14 +129,14 @@ function PostCard({ post, currentUser, onUnsave }) {
                 <img 
                   className="w-100 rounded" 
                   style={{ maxHeight: '500px', objectFit: 'contain', backgroundColor: '#f0f0f0' }}
-                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `http://localhost:3000/${post.imageUrl}`} 
+                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `${API_BASE}/${post.imageUrl}`} 
                   alt="post" 
                 />
               ) : (
                 <img 
                   className="w-100 rounded" 
                   style={{ maxHeight: '500px', objectFit: 'cover', cursor: 'pointer' }}
-                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `http://localhost:3000/${post.imageUrl}`} 
+                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `${API_BASE}/${post.imageUrl}`} 
                   alt="post" 
                 />
               )}

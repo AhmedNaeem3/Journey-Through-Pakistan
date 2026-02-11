@@ -8,6 +8,8 @@ import { toast } from 'react-toastify'
 import '../assests/css/sidebar.css'
 import '../assests/css/customStyle.css'
 import '../assests/css/skeleton.css'
+
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 import { getProfilePictureUrl } from '../utils/imageUtils.js'
 
 export default function navbar() {
@@ -153,7 +155,7 @@ export default function navbar() {
                 <img 
                   src={
                     notification.actor?.hasProfilePicture && notification.actor?.profilePicture 
-                      ? `http://localhost:3000/${notification.actor.profilePicture}` 
+                      ? `${API_BASE}/${notification.actor.profilePicture}` 
                       : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
                   } 
                   alt={actorName}

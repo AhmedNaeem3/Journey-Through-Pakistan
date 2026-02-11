@@ -1,3 +1,5 @@
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 /**
  * Get the full image URL
  * If the URL is already a full URL (http/https), return it as-is
@@ -14,7 +16,7 @@ export const getImageUrl = (imageUrl) => {
   }
   
   // Otherwise, prepend local server URL (for backward compatibility with local files)
-  return `http://localhost:3000/${imageUrl}`;
+  return `${API_BASE}/${imageUrl}`;
 };
 
 /**

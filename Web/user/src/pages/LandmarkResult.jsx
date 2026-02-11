@@ -9,6 +9,8 @@ import { getProfilePictureUrl, getImageUrl } from "../utils/imageUtils";
 import GeminiModal from "../components/GeminiModal";
 import "../assests/css/landmark-result.css";
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 export default function LandmarkResult() {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
@@ -424,8 +426,7 @@ export default function LandmarkResult() {
     
     // If it's already a proxy URL, return as is
     if (url.includes('/landmarks/photo/')) {
-      const API_BASE_URL = 'http://localhost:3000';
-      return url.startsWith('http') ? url : `${API_BASE_URL}${url}`;
+      return url.startsWith('http') ? url : `${API_BASE}${url}`;
     }
     
     // If it's a direct Google Maps API URL, extract photo reference and convert
@@ -436,19 +437,16 @@ export default function LandmarkResult() {
         try {
           const originalUrl = new URL(url);
           const originalMaxwidth = originalUrl.searchParams.get('maxwidth') || maxwidth;
-          const API_BASE_URL = 'http://localhost:3000';
-          return `${API_BASE_URL}/landmarks/photo/${encodeURIComponent(photoRef)}?maxwidth=${originalMaxwidth}`;
+          return `${API_BASE}/landmarks/photo/${encodeURIComponent(photoRef)}?maxwidth=${originalMaxwidth}`;
         } catch (e) {
-          const API_BASE_URL = 'http://localhost:3000';
-          return `${API_BASE_URL}/landmarks/photo/${encodeURIComponent(photoRef)}?maxwidth=${maxwidth}`;
+          return `${API_BASE}/landmarks/photo/${encodeURIComponent(photoRef)}?maxwidth=${maxwidth}`;
         }
       }
     }
     
     // For relative URLs, make them absolute
     if (!url.startsWith('http')) {
-      const API_BASE_URL = 'http://localhost:3000';
-      return `${API_BASE_URL}${url}`;
+      return `${API_BASE}${url}`;
     }
     
     // Return as is if it's already a valid URL

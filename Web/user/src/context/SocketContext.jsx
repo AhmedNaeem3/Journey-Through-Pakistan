@@ -184,9 +184,10 @@ export const SocketProvider = ({ children }) => {
     if (isAuthenticated && user) {
       // Get token from cookie
       const token = getCookie('appToken');
+      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       
       // Create socket connection
-      const newSocket = io('http://localhost:3000', {
+      const newSocket = io(API_BASE, {
         auth: {
           token: token
         },

@@ -46,11 +46,12 @@ export default function LoginForm() {
 
   // 🔹 Redirect to backend for OAuth login
   const handleOAuth = (provider) => {
+    const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
     let url = "";
-    if (provider === "google") url = "http://localhost:3000/auth/login/google";
+    if (provider === "google") url = `${API_BASE}/auth/login/google`;
     if (provider === "facebook")
-      url = "http://localhost:3000/auth/login/facebook";
-    if (provider === "apple") url = "http://localhost:3000/auth/login/apple";
+      url = `${API_BASE}/auth/login/facebook`;
+    if (provider === "apple") url = `${API_BASE}/auth/login/apple`;
 
     window.location.href = url; // 🚀 redirect user to backend OAuth flow
   };

@@ -265,7 +265,7 @@ export default function SignupForm() {
           type="button"
           className="social-btn"
           onClick={() => {
-            window.location.href = "http://localhost:3000/auth/login/google";
+            window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/auth/login/google`;
           }}
         >
           <FaGoogle /> Continue with Google
@@ -274,7 +274,7 @@ export default function SignupForm() {
           type="button"
           className="social-btn"
           onClick={() => {
-            window.location.href = "http://localhost:3000/auth/login/apple";
+            window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/auth/login/apple`;
           }}
         >
           <FaApple /> Continue with Apple
@@ -283,7 +283,7 @@ export default function SignupForm() {
           type="button"
           className="social-btn"
           onClick={() => {
-            window.location.href = "http://localhost:3000/auth/login/facebook";
+            window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/auth/login/facebook`;
           }}
         >
           <FaFacebookF /> Continue with Facebook

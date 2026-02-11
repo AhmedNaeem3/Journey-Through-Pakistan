@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./otp.css";
 
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const OTPVerification = () => {
   const location = useLocation();
   const email = location.state?.email || ""; // ✅ Email passed from Register page
@@ -18,7 +20,7 @@ const OTPVerification = () => {
     if (otp.length === 6) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/users/verify-otp",
+          `${API_BASE}/users/verify-otp`,
           {
             email,
             otp,
@@ -54,7 +56,7 @@ const OTPVerification = () => {
     setResendLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/users/resend-otp",
+        `${API_BASE}/users/resend-otp`,
         {
           email,
         }

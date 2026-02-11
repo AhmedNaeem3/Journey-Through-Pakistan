@@ -4,6 +4,8 @@ import { getFriends } from '../api/authApi';
 import { getMyGroups } from '../api/groupsApi';
 import '../assests/css/newChatModal.css';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 export default function NewChatModal({ isOpen, onClose, onSelectFriend, onSelectGroup }) {
   const [activeTab, setActiveTab] = useState('friends'); // 'friends' or 'groups'
   const [friends, setFriends] = useState([]);
@@ -117,7 +119,7 @@ export default function NewChatModal({ isOpen, onClose, onSelectFriend, onSelect
                     <img
                       src={
                         friend.hasProfilePicture && friend.profilePicture
-                          ? `http://localhost:3000/${friend.profilePicture}`
+                          ? `${API_BASE}/${friend.profilePicture}`
                           : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
                       }
                       alt={friend.name}
@@ -148,9 +150,9 @@ export default function NewChatModal({ isOpen, onClose, onSelectFriend, onSelect
                     <img
                       src={
                         group.groupPhoto
-                          ? `http://localhost:3000/${group.groupPhoto}`
+                          ? `${API_BASE}/${group.groupPhoto}`
                           : group.coverImage
-                          ? `http://localhost:3000/${group.coverImage}`
+                          ? `${API_BASE}/${group.coverImage}`
                           : 'https://via.placeholder.com/200'
                       }
                       alt={group.name}

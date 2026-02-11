@@ -10,6 +10,8 @@ import '../assests/css/group-detail.css';
 import '../assests/css/community.css';
 import { GroupDetailSkeleton, PostCardSkeleton } from '../components/SkeletonLoader.jsx';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 export default function GroupDetail() {
   const { groupId } = useParams();
   const navigate = useNavigate();
@@ -1184,7 +1186,7 @@ function GroupPostCard({ post, onToggleLike, onAddComment, onPostUpdate, onPostD
               <Link to={`/community/post/${post._id}`}>
                 <img 
                   style={{ width: '100%', height: 'auto' }} 
-                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `http://localhost:3000/${post.imageUrl}`} 
+                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `${API_BASE}/${post.imageUrl}`} 
                   alt="post" 
                 />
               </Link>
@@ -1194,7 +1196,7 @@ function GroupPostCard({ post, onToggleLike, onAddComment, onPostUpdate, onPostD
               <Link to={`/community/post/${post._id}`}>
                 <img 
                   className="object-fit-cover" 
-                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `http://localhost:3000/${post.imageUrl}`} 
+                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `${API_BASE}/${post.imageUrl}`} 
                   alt="post" 
                 />
               </Link>
@@ -1333,7 +1335,7 @@ function EditPostModal({ post, onClose, onUpdate }) {
             {post.imageUrl && (
               <div className="mb-3">
                 <img 
-                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `http://localhost:3000/${post.imageUrl}`} 
+                  src={post.imageUrl.startsWith('http') ? post.imageUrl : `${API_BASE}/${post.imageUrl}`} 
                   alt="post" 
                   className="img-fluid rounded"
                 />

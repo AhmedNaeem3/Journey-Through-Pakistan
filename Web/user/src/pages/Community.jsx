@@ -17,6 +17,8 @@ import { listGroups, createGroup, joinGroup, leaveGroup, getGroupPosts } from '.
 import "../assests/css/skeleton.css";
 import { getProfilePictureUrl, getImageUrl } from '../utils/imageUtils.js';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 function CreatePostBar({ onPost, currentUser, onStatusCreated, onOpenStatusModal, onGroups = [] }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -1765,7 +1767,7 @@ function Composer({ onPost, currentUser }) {
                       style={{ fontSize: '0.85rem' }}
                     >
                       <img 
-                        src={userPic ? `http://localhost:3000/${userPic}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
+                        src={userPic ? `${API_BASE}/${userPic}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
                         alt={userName}
                         className="rounded-circle"
                         style={{ width: '20px', height: '20px', objectFit: 'cover' }}

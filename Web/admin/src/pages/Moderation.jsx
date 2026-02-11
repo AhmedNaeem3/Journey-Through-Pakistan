@@ -7,6 +7,8 @@ import { getProfilePictureUrl } from '../utils/imageUtils';
 import Toast from '../components/Toast';
 import './Moderation.css';
 
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const Moderation = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -484,7 +486,7 @@ const Moderation = () => {
                       <img 
                         src={selectedReport.content.imageUrl.startsWith('http') 
                           ? selectedReport.content.imageUrl 
-                          : `http://localhost:3000/${selectedReport.content.imageUrl}`} 
+                          : `${API_BASE}/${selectedReport.content.imageUrl}`} 
                         alt="Content"
                         className="content-image"
                       />
