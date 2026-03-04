@@ -50,20 +50,18 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
     const allowedOrigins = [
-      "http://localhost:5173", 
+      "http://localhost:5173",
       "http://localhost:5174",
       "http://localhost:3000",
-      "http://10.0.2.2:3000", // Android emulator making requests
+      "http://10.0.2.2:3000",
       "https://jtp-user.vercel.app",
-      "https://jtp-user-dlj0io7z0-zeeshan-afzals-projects-7c4216ff.vercel.app"
+      "https://jtp-user-dlj0io7z0-zeeshan-afzals-projects-7c4216ff.vercel.app",
       "*"
     ];
     
-    // Allow all origins in development (for mobile apps)
     if (process.env.NODE_ENV !== 'production') {
       return callback(null, true);
     }
@@ -71,7 +69,7 @@ app.use(cors({
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(null, true); // Allow all in dev mode for mobile
+      callback(null, true); // Always true (so technically fine)
     }
   },
   credentials: true,
