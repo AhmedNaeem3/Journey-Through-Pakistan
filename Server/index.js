@@ -59,7 +59,7 @@ app.use(cors({
       "http://localhost:3000",
       "http://10.0.2.2:3000", // Android emulator making requests
       "https://jtp-user.vercel.app",
-      "jtp-user-dlj0io7z0-zeeshan-afzals-projects-7c4216ff.vercel.app"
+      "https://jtp-user-dlj0io7z0-zeeshan-afzals-projects-7c4216ff.vercel.app"
       "*"
     ];
     
