@@ -79,16 +79,15 @@ export const authCallback = async (req, res) => {
     }
 
     const appToken = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-      expiresIn: "1d",
+      expiresIn: "7d",
     });
 
     // Set HttpOnly cookie for SPA consumption (use appToken to match user app)
-    res.cookie("appToken", appToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
-      path: "/",
+   res.cookie("appToken", token, {
+      httpOnly: true,   // keeps it hidden from JavaScript
+      secure: true,     // must be true on HTTPS (Vercel/Railway are HTTPS)
+      sameSite: "none", // allows cross-site requests (Vercel <-> Railway)
+      maxAge: 7 * 24 * 60 * 60 * 1000, // optional 7 days
     });
 
     // Redirect to dashboard after successful OAuth login
