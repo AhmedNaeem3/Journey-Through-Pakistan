@@ -58,6 +58,7 @@ app.use(cors({
       "http://localhost:5174",
       "http://localhost:3000",
       "http://10.0.2.2:3000", // Android emulator making requests
+      "https://jtp-user.vercel.app",
     ];
     
     // Allow all origins in development (for mobile apps)
