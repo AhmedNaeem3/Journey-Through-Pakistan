@@ -79,26 +79,19 @@ export const authCallback = async (req, res) => {
     }
 
     const appToken = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-      expiresIn: "2h",
+      expiresIn: "7d",
     });
 
-    const hasAddress = Boolean(
-      user.shippingAddress &&
-        (user.shippingAddress.address ||
-          user.shippingAddress.postalCode ||
-          user.shippingAddress.country)
-    );
-
-    const nextPath = hasAddress ? "/home" : "/complete-profile";
-    // Set HttpOnly cookie for SPA consumption
-    res.cookie("token", appToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 2 * 60 * 60 * 1000,
+    // Set HttpOnly cookie for SPA consumption (use appToken to match user app)
+   res.cookie("appToken", token, {
+      httpOnly: true,   // keeps it hidden from JavaScript
+      secure: true,     // must be true on HTTPS (Vercel/Railway are HTTPS)
+      sameSite: "none", // allows cross-site requests (Vercel <-> Railway)
+      maxAge: 7 * 24 * 60 * 60 * 1000, // optional 7 days
     });
 
-    const redirectUrl = `${process.env.FRONTEND_URL}${nextPath}`;
+    // Redirect to dashboard after successful OAuth login
+    const redirectUrl = `${process.env.FRONTEND_URL || "http://localhost:5173"}/dashboard`;
     return res.redirect(redirectUrl);
   } catch (err) {
     console.error(
@@ -106,5 +99,78 @@ export const authCallback = async (req, res) => {
       err.response?.data || err.message || err
     );
     return res.status(500).send("Authentication failed");
+  }
+};
+
+// Mobile Google Sign-In endpoint
+export const mobileGoogleSignIn = async (req, res) => {
+  try {
+    const { idToken } = req.body;
+    
+    if (!idToken) {
+      return res.status(400).json({ message: "Google ID token is required" });
+    }
+
+    // Verify Google ID token with Google's API
+    const googleResponse = await axios.get(
+      `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`
+    );
+
+    const { email, name, picture, sub } = googleResponse.data;
+
+    if (!email) {
+      return res.status(400).json({ message: "Invalid Google token - email not found" });
+    }
+
+    // Check if user exists
+    let user = await User.findOne({ email });
+    
+    if (!user) {
+      // Create new user with Google account
+      user = await User.create({
+        auth0Id: `google-oauth2|${sub}`,
+        email,
+        name: name || email.split('@')[0],
+        profilePicture: picture,
+      });
+    } else if (!user.auth0Id) {
+      // Link Google account to existing user
+      user.auth0Id = `google-oauth2|${sub}`;
+      if (!user.profilePicture && picture) {
+        user.profilePicture = picture;
+      }
+      await user.save();
+    }
+
+    // Generate app token
+    const appToken = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+      expiresIn: "1d",
+    });
+
+    // Return token and user data for mobile app
+    return res.status(200).json({
+      message: "Google sign-in successful",
+      token: appToken,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        profilePicture: user.profilePicture,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    console.error("Mobile Google sign-in error:", err.response?.data || err.message || err);
+    
+    if (err.response?.status === 400) {
+      return res.status(400).json({ 
+        message: "Invalid Google token" 
+      });
+    }
+    
+    return res.status(500).json({ 
+      message: "Google authentication failed",
+      error: err.message 
+    });
   }
 };

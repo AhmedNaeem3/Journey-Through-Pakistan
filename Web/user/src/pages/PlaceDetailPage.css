@@ -1,0 +1,66 @@
+.place-detail-page {
+  min-height: calc(100vh - 70px);
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.ai-description-content {
+  line-height: 1.7;
+}
+
+.ai-description-content h3,
+.ai-description-content h4,
+.ai-description-content h5,
+.ai-description-content h6 {
+  color: #0d6efd;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ai-description-content p {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.ai-description-content ul,
+.ai-description-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.ai-description-content li {
+  margin-bottom: 0.5rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .place-detail-page {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,114 @@
+import express from 'express';
+import { identifyLandmark, getNearbyPlaces, getLandmarkById, getUserLandmarkCount, getPlacePhotos, getNearbyPlacesForLandmark, proxyPlacePhoto, saveLandmark, getSavedLandmarks, deleteSavedLandmark } from '../controller/landmarkController.js';
+import uploadLandmark from '../middleware/uploadLandmark.js';
+import { verifyToken } from '../middleware/auth.js';
+
+const router = express.Router();
+
+/**
+ * GET /landmarks/nearby
+ * Get nearby places based on GPS coordinates
+ * 
+ * Query params:
+ * - lat: Latitude (number)
+ * - lng: Longitude (number)
+ * 
+ * Response:
+ * {
+ *   success: boolean,
+ *   places: [
+ *     {
+ *       name: string,
+ *       place_id: string,
+ *       location: { lat: number, lng: number },
+ *       distance: number,
+ *       address: string,
+ *       types: string[],
+ *       rating: number,
+ *       photo_url: string
+ *     }
+ *   ]
+ * }
+ */
+router.get(
+  '/nearby',
+  verifyToken, // Require authentication
+  getNearbyPlaces
+);
+
+/**
+ * POST /landmarks/identify
+ * Identify landmark from image and GPS coordinates
+ * 
+ * Body:
+ * - image: Image file (multipart/form-data)
+ * - lat: Latitude (number)
+ * - lng: Longitude (number)
+ * 
+ * Response:
+ * {
+ *   landmark_found: boolean,
+ *   name: string,
+ *   place_id: string,
+ *   location: { lat: number, lng: number },
+ *   confidence: number,
+ *   distance: number,
+ *   address: string,
+ *   types: string[],
+ *   rating: number,
+ *   labels: string[]
+ * }
+ * 
+ * OR (fallback):
+ * {
+ *   landmark_found: false,
+ *   nearest_places: [...]
+ * }
+ */
+router.post(
+  '/identify',
+  verifyToken, // Require authentication
+  uploadLandmark.single('image'),
+  identifyLandmark
+);
+
+/**
+ * GET /landmarks/user/count
+ * Get user's landmark search count (requires authentication)
+ * Must come before /:landmarkId route
+ */
+router.get('/user/count', verifyToken, getUserLandmarkCount);
+
+/**
+ * GET /landmarks/place/:placeId/photos
+ * Get photos for a place (public - no authentication required)
+ */
+router.get('/place/:placeId/photos', getPlacePhotos);
+
+/**
+ * GET /landmarks/photo/:photoReference
+ * Proxy endpoint for Google Places photos (public - no authentication required)
+ * Query params: maxwidth (optional, default: 1600)
+ */
+router.get('/photo/:photoReference', proxyPlacePhoto);
+
+/**
+ * GET /landmarks/nearby-for-landmark
+ * Get nearby places using landmark coordinates (public - no authentication required)
+ */
+router.get('/nearby-for-landmark', getNearbyPlacesForLandmark);
+
+// Save landmark routes - Must come before /:landmarkId route
+router.post('/save', verifyToken, saveLandmark);
+router.get('/saved', verifyToken, getSavedLandmarks);
+router.delete('/saved/:landmarkId', verifyToken, deleteSavedLandmark);
+
+/**
+ * GET /landmarks/:landmarkId
+ * Get landmark by ID (public - no authentication required)
+ * Must be last to avoid matching other routes
+ */
+router.get('/:landmarkId', getLandmarkById);
+
+export default router;
+

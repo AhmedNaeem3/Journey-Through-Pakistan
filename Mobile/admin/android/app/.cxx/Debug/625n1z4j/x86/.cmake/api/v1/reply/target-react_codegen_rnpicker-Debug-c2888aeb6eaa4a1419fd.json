@@ -1,0 +1,349 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/android/app/build/intermediates/cxx/Debug/625n1z4j/obj/x86/libreact_codegen_rnpicker.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"add_compile_options",
+			"target_compile_options",
+			"target_compile_reactnative_options",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/CMakeLists.txt",
+			"/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/react-native/ReactCommon/cmake-utils/react-native-flags.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 23,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 68,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 30,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 33,
+				"parent" : 4
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 30,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -Wno-error=deprecated-declarations -fno-limit-debug-info  -fPIC"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fexceptions"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-frtti"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-std=c++20"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wpedantic"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-gnu-zero-variadic-macro-arguments"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Werror"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-DFOLLY_NO_CONFIG=1"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-DLOG_TAG=\\\"ReactNative\\\""
+				},
+				{
+					"backtrace" : 0,
+					"fragment" : "-DFOLLY_HAVE_CLOCK_GETTIME=1"
+				},
+				{
+					"backtrace" : 0,
+					"fragment" : "-DFOLLY_USE_LIBCPP=1"
+				},
+				{
+					"backtrace" : 0,
+					"fragment" : "-DFOLLY_CFG_NO_COROUTINES=1"
+				},
+				{
+					"backtrace" : 0,
+					"fragment" : "-DFOLLY_MOBILE=1"
+				},
+				{
+					"backtrace" : 0,
+					"fragment" : "-DFOLLY_HAVE_RECVMMSG=1"
+				},
+				{
+					"backtrace" : 0,
+					"fragment" : "-DFOLLY_HAVE_PTHREAD=1"
+				},
+				{
+					"backtrace" : 0,
+					"fragment" : "-DFOLLY_HAVE_XSI_STRERROR_R=1"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "RN_SERIALIZABLE_STATE"
+				},
+				{
+					"define" : "react_codegen_rnpicker_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 7,
+					"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/."
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/../../../build/generated/source/codegen/jni"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/../../../build/generated/source/codegen/jni/react/renderer/components/rnpicker"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/reactnative/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/jsi/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/Users/personal/.gradle/caches/8.13/transforms/1c198194fb52b0a370a807ed0419898a/transformed/fbjni-0.7.0/prefab/modules/fbjni/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
+			],
+			"sysroot" : 
+			{
+				"path" : "/Users/personal/Library/Android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/darwin-x86_64/sysroot"
+			}
+		}
+	],
+	"id" : "react_codegen_rnpicker::@e8bb2e9e833f47d0d516",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--no-undefined-version -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/reactnative/libs/android.x86/libreactnative.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/Users/personal/.gradle/caches/8.13/transforms/d66495a626a242055530025b725796d3/transformed/react-android-0.83.1-debug/prefab/modules/jsi/libs/android.x86/libjsi.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/Users/personal/.gradle/caches/8.13/transforms/1c198194fb52b0a370a807ed0419898a/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.x86/libfbjni.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-latomic -lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX",
+		"sysroot" : 
+		{
+			"path" : "/Users/personal/Library/Android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/darwin-x86_64/sysroot"
+		}
+	},
+	"name" : "react_codegen_rnpicker",
+	"nameOnDisk" : "libreact_codegen_rnpicker.so",
+	"paths" : 
+	{
+		"build" : "rnpicker_autolinked_build",
+		"source" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/RNCAndroidDialogPickerMeasurementsManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/RNCAndroidDialogPickerShadowNode.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/RNCAndroidDialogPickerState.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/RNCAndroidDropdownPickerMeasurementsManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/RNCAndroidDropdownPickerShadowNode.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/RNCAndroidDropdownPickerState.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/src/main/jni/rnpicker.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/build/generated/source/codegen/jni/react/renderer/components/rnpicker/ComponentDescriptors.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/build/generated/source/codegen/jni/react/renderer/components/rnpicker/EventEmitters.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/build/generated/source/codegen/jni/react/renderer/components/rnpicker/Props.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/build/generated/source/codegen/jni/react/renderer/components/rnpicker/ShadowNodes.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/personal/JTP/Journey-Through-Pakistan/Mobile/admin/MobileApp/node_modules/@react-native-picker/picker/android/build/generated/source/codegen/jni/react/renderer/components/rnpicker/States.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}
